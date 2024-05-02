@@ -6,7 +6,9 @@ const Device = new Schema({
     pin: { type: String, required: true },
     type: { type: String, required: false, default: "(untype)" }, // FAN, DOOR, LIGHT
     isConnected: { type: Boolean, default: true },
-    status: { type: Number, default: 0 } // -1: notConnected, 0: OFF, 1: ON
+    status: { type: Number, default: 0 }, // -1: notConnected, 0: OFF, 1: ON
+    ESP: { type: mongoose.Schema.Types.ObjectId, ref: "esp" },
+    room: { type: mongoose.Schema.Types.ObjectId, ref: "room" }
 }, {
     timestamps: true,
     statics: {
@@ -31,6 +33,12 @@ const Device = new Schema({
             }).catch(err => {
                 throw err
             });
+        },
+
+        async getDevice(_idDevice) {
+            return await this.findById(_idDevice)
+                .populate({ path: 'ESP' })
+                .populate({ path: 'room' })
         }
     }
 });

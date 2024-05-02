@@ -12,7 +12,7 @@ const ESP = new Schema({
     statics: {
         async getInfo(_idESP) {
             return await this.findOne({ _idESP: _idESP })
-                .populate('devices');
+                .populate({ path: 'devices' });
         },
         async addESP(esp) {
             const espNew = await this(esp);

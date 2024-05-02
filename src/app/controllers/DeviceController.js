@@ -16,6 +16,22 @@ class DeviceController {
             res.status(400).json("Failure updated");
         }
     }
+
+    async getDevice(req, res, next) {
+        try {
+            console.log(req.params.idDevice);
+            const device = await Device.getDevice(req.params.idDevice);
+
+            // devicesInfos.forEach(async (info) => {
+            //     await Device.changeStatus(info._id, info.status);
+            // });
+
+            res.status(200).json(device);
+        } catch (err) {
+            console.log(err)
+            res.status(400).json(err);
+        }
+    }
 }
 
 module.exports = new DeviceController;

@@ -1,7 +1,9 @@
-// const Device = require('./device')
-// const ESP = require('./ESP')
+const Device = require('./device')
+const ESP = require('./ESP')
+const Room = require('./room')
 
-// module.exports = {
-//     Device,
-//     ESP
-// }
+module.exports = {
+    Device,
+    ESP,
+    Room
+}
