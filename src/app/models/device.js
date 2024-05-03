@@ -39,6 +39,16 @@ const Device = new Schema({
             return await this.findById(_idDevice)
                 .populate({ path: 'ESP' })
                 .populate({ path: 'room' })
+        },
+
+        async updateDevice(_idDevice, update) {
+            const device = await this.getDevice(_idDevice);
+
+            if (!device) {
+                throw Error('Not found any device with this _id');
+            }
+
+            return await this.findByIdAndUpdate(_idDevice, update);
         }
     }
 });
