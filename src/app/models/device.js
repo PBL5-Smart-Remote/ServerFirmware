@@ -22,7 +22,7 @@ const Device = new Schema({
         },
 
         async changeStatus(_idDevice, status) {
-            var status = (String('on').valueOf() == new String(status).valueOf()) ? 1 : 0;
+            var status = (String('on').valueOf() == new String(status).toLowerCase().valueOf()) ? 1 : 0;
 
             await this.updateOne({
                 _id: _idDevice

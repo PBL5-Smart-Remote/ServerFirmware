@@ -5,6 +5,6 @@ const deviceController = require('../app/controllers/DeviceController');
 
 router.post('/changeStatus', deviceController.changeStatus);
 router.get('/:idDevice', deviceController.getDevice)
-router.post('/update/:idDevice', deviceController.updateDevice)
+router.put('/update/:idDevice', deviceController.updateDevice)
 
 module.exports = router;
