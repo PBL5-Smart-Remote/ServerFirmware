@@ -6,9 +6,10 @@ const Device = new Schema({
     pin: { type: String, required: true },
     type: { type: String, required: false, default: "(untype)" }, // FAN, DOOR, LIGHT
     isConnected: { type: Boolean, default: true },
-    status: { type: Number, default: 0 }, // -1: notConnected, 0: OFF, 1: ON
+    status: { type: Number, default: 0 }, // -1: notConnected, 0: OFF / Dong, 1: ON / Mo
     ESP: { type: mongoose.Schema.Types.ObjectId, ref: "esp" },
-    room: { type: mongoose.Schema.Types.ObjectId, ref: "room" }
+    room: { type: mongoose.Schema.Types.ObjectId, ref: "room" },
+    label: { type: mongoose.Schema.Types.ObjectId, ref: "label", default: '6639cf7fc1e99411eba34413' } // default unlabel
 }, {
     timestamps: true,
     statics: {
