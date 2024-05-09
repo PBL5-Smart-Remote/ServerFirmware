@@ -20,13 +20,20 @@ class DeviceController {
     async getDevice(req, res, next) {
         try {
             console.log(req.params.idDevice);
-            const device = await Device.getDevice(req.params.idDevice);
+            if (req.params.idDevice == 'allDevices') {
+                const devices = await Device.getAllDevices();
+                res.status(200).json(devices);
+            } else {
+
+                const device = await Device.getDevice(req.params.idDevice);
+                res.status(200).json(device);
+            }
 
             // devicesInfos.forEach(async (info) => {
             //     await Device.changeStatus(info._id, info.status);
             // });
 
-            res.status(200).json(device);
+
         } catch (err) {
             console.log(err)
             res.status(400).json(err);
@@ -49,10 +56,10 @@ class DeviceController {
     async updateByAudio(req, res, next) {
         try {
             console.log(req.body);
-            
+
             const decodedLabel = await Label.decodeLabel(req.body.label);
             console.log(decodedLabel);
-            
+
             await Device.changeStatusByDecode(req.body.idRoom, decodedLabel);
 
             res.status(200).json("Updated");

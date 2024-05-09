@@ -63,6 +63,12 @@ const Device = new Schema({
             var status = decodedLabel.status == 1 ? 'on' : 'off'
 
             await this.changeStatus(device._id, status)
+        },
+
+        async getAllDevices() {
+            return await this.find()
+            // .populate({ path: 'ESP' })
+            .populate({ path: 'room' })
         }
     }
 });
