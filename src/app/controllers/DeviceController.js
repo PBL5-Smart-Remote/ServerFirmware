@@ -1,5 +1,5 @@
 const Device = require('../models/device');
-
+const Label = require('../models/label');
 // devices/
 class DeviceController {
     async changeStatus(req, res, next) {
@@ -39,6 +39,24 @@ class DeviceController {
             const device = await Device.updateDevice(req.params.idDevice, req.body);
 
             res.status(200).json("Updated");
+        } catch (err) {
+            console.log(err)
+            res.status(400).json(err.message);
+        }
+    }
+
+
+    async updateByAudio(req, res, next) {
+        try {
+            console.log(req.body);
+            
+            const decodedLabel = await Label.decodeLabel(req.body.label);
+            console.log(decodedLabel);
+            
+            await Device.changeStatusByDecode(req.body.idRoom, decodedLabel);
+
+            res.status(200).json("Updated");
+
         } catch (err) {
             console.log(err)
             res.status(400).json(err.message);

@@ -50,6 +50,19 @@ const Device = new Schema({
             }
 
             return await this.findByIdAndUpdate(_idDevice, update);
+        },
+
+        async changeStatusByDecode(_idRoom, decodedLabel) {
+
+            const device = await this.findOne({ room: _idRoom, label: decodedLabel.label._id })
+            // console.log(device)
+            if (!device) {
+                throw Error(`Not found any device in room: ${_idRoom} has label = ${decodedLabel.label.label}`)
+            }
+
+            var status = decodedLabel.status == 1 ? 'on' : 'off'
+
+            await this.changeStatus(device._id, status)
         }
     }
 });
