@@ -23,7 +23,11 @@ const Device = new Schema({
         },
 
         async changeStatus(_idDevice, status) {
-            var status = (String('on').valueOf() == new String(status).toLowerCase().valueOf()) ? 1 : 0;
+            if (status == 1 || status == 0) {
+
+            } else {
+                var status = (String('on').valueOf() == new String(status).toLowerCase().valueOf()) ? 1 : 0;
+            }
 
             await this.updateOne({
                 _id: _idDevice
@@ -67,8 +71,8 @@ const Device = new Schema({
 
         async getAllDevices() {
             return await this.find()
-            // .populate({ path: 'ESP' })
-            .populate({ path: 'room' })
+                // .populate({ path: 'ESP' })
+                .populate({ path: 'room' })
         }
     }
 });

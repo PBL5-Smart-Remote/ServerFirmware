@@ -21,7 +21,7 @@ const Label = new Schema({
                 if (label[2] == 0) {
                     search = 'Cửa'
                 } else {
-                    search = 'Đèn ' + label[2]
+                    search = 'Quạt ' + label[2]
                 }
             } else {
                 search = 'Đèn ' + label[1]

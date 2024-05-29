@@ -5,6 +5,8 @@ const db = require('./config/db');
 const app = express();
 const port = 4500;
 
+const { cron_schedule } = require('./util/cron')
+
 const route = require('./routes');
 // Connect to DB
 
@@ -22,6 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // HTTP logger
 app.use(morgan('combined'));
+
+cron_schedule('http://localhost:5500/schedule/cron');
 
 // Routes init
 route(app);
