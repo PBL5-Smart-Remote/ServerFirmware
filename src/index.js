@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // HTTP logger
 app.use(morgan('combined'));
 
-cron_schedule('http://localhost:5500/schedule/cron');
+// cron_schedule('http://localhost:5500/schedule/cron');
 
 // Routes init
 route(app);

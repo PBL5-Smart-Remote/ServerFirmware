@@ -12,8 +12,6 @@ const Label = new Schema({
                 label: undefined
             }
 
-            // data.status = label[0] == 1 ? await this.findOne({ label: 'Bật' }) : await this.findOne({ label: 'Tắt' })
-            // console.log(data.status)
             data.status = label[0]
             var search = String();
 
@@ -30,6 +28,11 @@ const Label = new Schema({
             data.label = await this.findOne({ label: search })
             // console.log(data.label)
             return data
+        },
+
+        async getLabels(type) {
+            var labels = await this.find({ type: type });
+            return labels
         }
     },
 });
