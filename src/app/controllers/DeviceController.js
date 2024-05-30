@@ -26,6 +26,7 @@ class DeviceController {
             } else {
 
                 const device = await Device.getDevice(req.params.idDevice);
+                console.log(device);
                 res.status(200).json(device);
             }
 

@@ -44,6 +44,7 @@ const Device = new Schema({
             return await this.findById(_idDevice)
                 .populate({ path: 'ESP' })
                 .populate({ path: 'room' })
+                .populate({ path: 'label' })
         },
 
         async updateDevice(_idDevice, update) {
