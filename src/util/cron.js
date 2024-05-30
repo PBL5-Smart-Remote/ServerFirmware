@@ -12,7 +12,7 @@ module.exports = {
                     console.log(response.data.devicesStatus);
                     const devicesStatus = response.data.devicesStatus;
                     devicesStatus.forEach(deviceStatus => {
-                        console.log(deviceStatus._id, deviceStatus.status)
+                        console.log('cron info: ', deviceStatus._id, deviceStatus.status)
                         Device.changeStatus(deviceStatus._id, deviceStatus.status)
                     });
                 })

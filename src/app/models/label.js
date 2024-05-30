@@ -31,7 +31,13 @@ const Label = new Schema({
         },
 
         async getLabels(type) {
-            var labels = await this.find({ type: type });
+            const labels = await this.find({
+                $or: [
+                    { label: '(unlabel)' },
+                    { type: type },
+                ]
+            });
+
             return labels
         }
     },
