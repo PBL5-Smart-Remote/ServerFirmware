@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // HTTP logger
 app.use(morgan('combined'));
 
-// cron_schedule('https://smart-home-server-app.vercel.app/schedule/cron');
+cron_schedule('https://smart-home-server-app.vercel.app/schedule/cron');
 
 // Routes init
 route(app);
