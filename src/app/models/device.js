@@ -76,6 +76,7 @@ const Device = new Schema({
             return await this.find()
                 // .populate({ path: 'ESP' })
                 .populate({ path: 'room' })
+                .populate({ path: 'label' })
         }
     }
 });
