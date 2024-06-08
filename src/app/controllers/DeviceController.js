@@ -22,6 +22,7 @@ class DeviceController {
             console.log(req.params.idDevice);
             if (req.params.idDevice == 'allDevices') {
                 const devices = await Device.getAllDevices();
+                console.log(devices);
                 res.status(200).json(devices);
             } else {
 
