@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('combined'));
 
 cron_schedule('https://api.tugino.com:5501/schedule/cron');
-
+cron_schedule('https://smart-home-server-app.vercel.app/schedule/cron');
 // Routes init
 route(app);
 
